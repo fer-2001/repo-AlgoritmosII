@@ -68,7 +68,7 @@ public class GreatestCommonDivisorTest {
 	@Test
 	public void test(){
 		int gcd = GreatestCommonDivisor.euclidAlgorithm(m,n);
-		assertTrue(gcd == GreatestCommonDivisor.definitionBasedAlgorithm(m,n));
+		assertTrue(gcd == GreatestCommonDivisor.middleSchoolAlgorithm(m,n));
 	}
 
 	/**

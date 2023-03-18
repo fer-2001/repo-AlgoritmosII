@@ -57,12 +57,36 @@ public class GreatestCommonDivisor {
 	*/
 	public static int middleSchoolAlgorithm(int m, int n){
 		//throw new UnsupportedOperationException("method not yet implemented");
+		if (m < 0 || n < 0 || (m == 0 && n == 0)) throw new IllegalArgumentException("numbers must be nonnegative and not-both-zero");
 		int[] factoresPrimosM = factoresPrimo(m);
 		int[] factoresPrimosN = factoresPrimo(n);
+		int max = Math.max(factoresPrimosM.length,factoresPrimosN.length);
+		int[] salida = new int[max];
+		int z=0;
+		for(int i=0; i<factoresPrimosM.length; i++){
+			for(int j=z; j<factoresPrimosN.length; j++){
+				if(factoresPrimosM[i] == factoresPrimosN[j]){
+					salida[z] = factoresPrimosM[j];
+					z++;
+					break;
+				}
+			}
+		}
 
-
+		int i=0;
+		int resultado=1;
+		while(salida[i]!=0){
+			resultado = resultado * salida[i];
+			i++;
+		}
+	return resultado;
 	}
 
+	/**
+	 * Metodo auxiliar privado para factorizar un numero segun sus factores primos
+	 * @param n numero a factorizar
+	 * @return un arreglo con la secuencia de numeros que multiplicados, devuelven n
+	 */
 	private static int[] factoresPrimo(int n){
 		int[] factoresPrimos= sieve(n);
 		int[] factorizacionN = new int[factoresPrimos.length];
@@ -79,27 +103,6 @@ public class GreatestCommonDivisor {
 			}
 		}
 		return factorizacionN;
-	}
-
-	private static boolean buscar(int x, int[] array, int n){
-		int izq = 0;
-		int der = n;
-		int medio;
-		while(izq <= der){
-			medio = (izq + der) / 2;
-			int aux = array[medio];
-			if (aux == x){
-				return true;
-			}
-			if(aux > x){
-				der = medio -1;
-			}
-			if(aux > x){
-				izq = medio + 1;
-			}
-
-		}
-		return false;
 	}
 
 	/**
