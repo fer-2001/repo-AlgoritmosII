@@ -115,6 +115,16 @@ public class EuclidAlgorithmBenchmarkTest {
 		int gcd = GreatestCommonDivisor.definitionBasedAlgorithm(state.m,state.n);
 
 	}
+	/*
+	@Fork(value = 1, warmups = 1)
+	@Warmup(iterations = 1)
+	@Benchmark
+	@BenchmarkMode(Mode.AverageTime)
+	public void benchmarkmiddleSchoolAlgorithm(BenchmarkState state) {
+
+		int gcd = GreatestCommonDivisor.middleSchoolAlgorithm(state.m,state.n);
+
+	}*/
 
 
 }

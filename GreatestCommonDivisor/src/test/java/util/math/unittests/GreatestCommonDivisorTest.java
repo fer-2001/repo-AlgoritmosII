@@ -67,10 +67,16 @@ public class GreatestCommonDivisorTest {
 	@Test
 	public void test(){
 		int gcd = GreatestCommonDivisor.euclidAlgorithm(m,n);
-		System.out.println(GreatestCommonDivisor.middleSchoolAlgorithm(m,n));
+		//System.out.println(GreatestCommonDivisor.middleSchoolAlgorithm(m,n));
 		assertTrue(gcd == GreatestCommonDivisor.middleSchoolAlgorithm(m,n));
 	}
 
+	@Test
+	public void test2(){
+		int gcd = GreatestCommonDivisor.euclidAlgorithm(m,n);
+		System.out.println(GreatestCommonDivisor.definitionBasedAlgorithm(m,n));
+		assertTrue(gcd == GreatestCommonDivisor.definitionBasedAlgorithm(m,n));
+	}
 	/**
 	 * Checks whether euclid algorithm throws the correct exception when is invoked
 	 * with wrong arguments.
