@@ -1,7 +1,5 @@
 package util.math;
 
-import java.util.ArrayList;
-
 /**
  * Computeds greatest common divisor of two nonnegative, not-both-zero
  * integers using diferents algorithms.
@@ -60,24 +58,28 @@ public class GreatestCommonDivisor {
 		if (m < 0 || n < 0 || (m == 0 && n == 0)) throw new IllegalArgumentException("numbers must be nonnegative and not-both-zero");
 		int[] factoresPrimosM = factoresPrimo(m);
 		int[] factoresPrimosN = factoresPrimo(n);
-		int max = Math.max(factoresPrimosM.length,factoresPrimosN.length);
+
+		int max = Math.min(factoresPrimosM.length,factoresPrimosN.length);
 		int[] salida = new int[max];
 		int z=0;
 		for(int i=0; i<factoresPrimosM.length; i++){
 			for(int j=z; j<factoresPrimosN.length; j++){
-				if(factoresPrimosM[i] == factoresPrimosN[j]){
-					salida[z] = factoresPrimosM[j];
+				if((factoresPrimosM[i] !=0) && (factoresPrimosN[j] !=0) && factoresPrimosM[i] == factoresPrimosN[j]){
+					salida[z] = factoresPrimosN[j];
 					z++;
-					break;
 				}
 			}
 		}
-
 		int i=0;
 		int resultado=1;
-		while(salida[i]!=0){
-			resultado = resultado * salida[i];
-			i++;
+		while(i<salida.length){
+			if(salida[i] != 0){
+				resultado = resultado * salida[i];
+				i++;
+			}
+			else{
+				i++;
+			}
 		}
 	return resultado;
 	}
@@ -93,12 +95,13 @@ public class GreatestCommonDivisor {
 		int aux=n;
 		int i=0;
 		int j=0;
-		while(aux != 1){
-			if (aux % factoresPrimos[i] == 0) {
-				aux= aux/factoresPrimos[i];
+		while(aux > 1 && i<factoresPrimos.length){
+			if ((factoresPrimos[i] != 0) && ((aux%factoresPrimos[i]) == 0)) {
+				aux=aux/factoresPrimos[i];
 				factorizacionN[j] = factoresPrimos[i];
 				j++;
-			} else {
+			}
+			else {
 				i++;
 			}
 		}
