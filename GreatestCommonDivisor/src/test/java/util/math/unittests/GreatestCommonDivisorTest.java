@@ -51,10 +51,10 @@ public class GreatestCommonDivisorTest {
 			{ 21, 12},
 			{ 3, 7},
 			{ 100, 7},
-			{ 53 , 39},
-			{ 39 , 53},
+			{ 0 , 39},
+			{ 39 , 0},
 			{ 60, 20},
-			//{ 1770398451, 70398451},
+		//	{ 1770398451, 70398451},
 		});
 	}
 
@@ -64,17 +64,17 @@ public class GreatestCommonDivisorTest {
 	 * euclid algorithm.
 	 * This is a parameterized unit test. See parameters elsewhere in this class.
 	 */
+
 	@Test
 	public void test(){
 		int gcd = GreatestCommonDivisor.euclidAlgorithm(m,n);
-		//System.out.println(GreatestCommonDivisor.middleSchoolAlgorithm(m,n));
 		assertTrue(gcd == GreatestCommonDivisor.middleSchoolAlgorithm(m,n));
 	}
 
+	
 	@Test
 	public void test2(){
 		int gcd = GreatestCommonDivisor.euclidAlgorithm(m,n);
-		System.out.println(GreatestCommonDivisor.definitionBasedAlgorithm(m,n));
 		assertTrue(gcd == GreatestCommonDivisor.definitionBasedAlgorithm(m,n));
 	}
 	/**
@@ -95,5 +95,6 @@ public class GreatestCommonDivisorTest {
 	public void testIllegalArgumentException2(){
 		int gcd = GreatestCommonDivisor.euclidAlgorithm(0,0);
 	}
+
 
 }

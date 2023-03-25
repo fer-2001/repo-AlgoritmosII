@@ -29,20 +29,25 @@ public class GreatestCommonDivisor {
 	* @return the greatest common divisor between m and n.
 	*/
 	public static int definitionBasedAlgorithm(int m, int n){
-		//throw new UnsupportedOperationException("method not yet implemented");
-		if (m < 0 || n < 0 || (m == 0 || n == 0)) throw new IllegalArgumentException("numbers must be nonnegative and not-both-zero");
-		int t = Math.min(m,n);
-		while(t > 0){
-			if(m%t == 0){
-				if(n%t == 0){
-					return t;
-				}else{
-					t=t-1;
-				}
+		if (m < 0 || n < 0 || (m == 0 && n == 0)) throw new IllegalArgumentException("numbers must be nonnegative and not-both-zero");
+		if(m==0)
+			return n;
+		if(n==0)
+			return m;
+		int t;
+		//int t = Math.min(m,n);
+		if(m<n){
+			t=m;
+		}
+		else{
+			t=n;
+		}
+
+		while(t != 1){
+			if(m%t==0 && n%t==0){
+				return t;
 			}
-			else{
-				t=t-1;
-			}
+			t--;
 		}
 		return t;
 	}
@@ -56,6 +61,12 @@ public class GreatestCommonDivisor {
 	public static int middleSchoolAlgorithm(int m, int n){
 		//throw new UnsupportedOperationException("method not yet implemented");
 		if (m < 0 || n < 0 || (m == 0 && n == 0)) throw new IllegalArgumentException("numbers must be nonnegative and not-both-zero");
+		
+		if(m==0)
+			return n;
+		if(n==0)
+			return m;
+
 		int[] factoresPrimosM = factoresPrimo(m);
 		int[] factoresPrimosN = factoresPrimo(n);
 
